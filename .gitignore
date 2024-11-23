@@ -1,0 +1,12 @@
+# Ignorowanie plików systemowych
+.DS_Store
+Thumbs.db
+
+# Logi
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorowanie plików środowiskowych
+.env
