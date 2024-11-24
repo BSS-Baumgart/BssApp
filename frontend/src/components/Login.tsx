@@ -52,13 +52,13 @@ const Login: React.FC = () => {
             className="w-full md:w-12 lg:w-8 xl:w-6 mb-3"
           />
           <Password
-            className="w-full md:w-12 lg:w-8 xl:w-6 mb-3"
-            style={{ width: "100%" }}
-            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            feedback={false}
+            inputClassName="w-full"
+            className="md:w-12 lg:w-8 xl:w-6 mb-3"
             toggleMask
+            placeholder="Password"
+            pt={{ iconField: { root: { className: "w-full" } } }}
           />
           <Button
             label="Log In"
