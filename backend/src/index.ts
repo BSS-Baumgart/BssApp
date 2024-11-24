@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import sequelize from "./config/dbConfig";
 import authRoutes from "./routes/authRoutes";
+import initializeDb from "./config/initializeDb";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
+initializeDb();
 
 // Test DB connection
 sequelize
