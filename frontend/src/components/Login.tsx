@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
+import useAuth from "../hooks/useAuth";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -11,18 +12,28 @@ const Login: React.FC = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const { login } = useAuth();
+
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault(); // Zapobiega przeładowaniu strony
+    e.preventDefault();
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        { username, password }
+        "http://localhost:3001/api/auth/login",
+        {
+          username,
+          password,
+        }
       );
-      localStorage.setItem("token", response.data.token);
+      console.log("Login successful, token:", response.data.token);
+
+      // Zapis tokenu i aktualizacja stanu
+      login(response.data.token);
+
       navigate("/dashboard");
     } catch (err) {
       setError("Invalid credentials");
+      console.error(err);
     }
   };
 

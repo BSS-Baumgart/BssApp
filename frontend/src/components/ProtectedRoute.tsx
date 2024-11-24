@@ -5,7 +5,15 @@ import useAuth from "../hooks/useAuth";
 const ProtectedRoute: React.FC = () => {
   const { isAuthenticated } = useAuth();
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+  if (isAuthenticated === undefined) {
+    return <div>Loading...</div>;
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
+  return <Outlet />;
 };
 
 export default ProtectedRoute;
