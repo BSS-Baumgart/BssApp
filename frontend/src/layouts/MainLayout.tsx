@@ -4,9 +4,9 @@ import Navbar from "../components/Navbar";
 
 const MainLayout: React.FC = () => {
   return (
-    <div>
+    <div className="main-layout">
       <Navbar />
-      <main>
+      <main className="content-container">
         <Outlet />
       </main>
     </div>
